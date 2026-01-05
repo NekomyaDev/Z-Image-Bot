@@ -1,0 +1,89 @@
+# Z-Image Turbo NSFW Configuration
+
+model:
+  checkpoint: "zImageTurboNSFW_20BF16AIO.safetensors"
+  vae: "ae.safetensors"
+  clip: "Qwen3-4B-Q5_K_M.gguf"
+  
+  # Model paths (relative to project root)
+  paths:
+    checkpoints: "models/checkpoints"
+    vae: "models/vae"
+    clip: "models/clip"
+    loras: "models/loras"
+
+generation:
+  # Default generation parameters
+  default_steps: 8
+  default_width: 1024
+  default_height: 1024
+  default_seed: -1
+  default_cfg_scale: 1.0
+  
+  # Z-Image Turbo specific
+  scheduler: "flowmatch"
+  guidance_scale: 1.0
+  
+  # RTX 4060 optimization
+  batch_size: 1
+  enable_quantization: true
+  low_vram_mode: true
+  
+  # RTX 4060 (8GB) için ek optimizasyonlar
+  # Eğer 8GB VRAM varsa, aşağıdakileri aktif et:
+  # cpu_offload_text_encoder: true  # Text encoder'ı CPU'da çalıştır
+  # cpu_offload_percent: 0.3  # %30 CPU offload
+  # max_resolution: 768  # 1024 yerine 768 kullan
+
+server:
+  host: "0.0.0.0"
+  port: 8000
+  workers: 1
+  
+  # CORS settings
+  cors_origins:
+    - "*"
+  
+  # Rate limiting
+  rate_limit:
+    enabled: true
+    requests_per_minute: 60
+
+discord:
+  # Bot configuration
+  token: "${DISCORD_TOKEN}"
+  command_prefix: "/"
+  
+  # Bot settings
+  max_queue_size: 10
+  default_timeout: 300  # 5 minutes
+  
+  # Commands
+  commands:
+    generate:
+      enabled: true
+      max_steps: 20
+      max_resolution: 2048
+    
+    queue:
+      enabled: true
+    
+    status:
+      enabled: true
+
+comfyui:
+  # ComfyUI server connection
+  host: "127.0.0.1"
+  port: 8188
+  timeout: 300
+  
+  # Workflow settings
+  workflow_path: "workflows/zimage_workflow.json"
+  output_path: "output"
+
+logging:
+  level: "INFO"
+  file: "logs/app.log"
+  max_size: "10MB"
+  backup_count: 5
+
