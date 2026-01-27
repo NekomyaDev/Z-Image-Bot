@@ -17,7 +17,7 @@ Production-ready ComfyUI API server with Discord bot integration for Z-Image Tur
 
 - Python 3.10+
 - CUDA 12.0+ (for RTX 4060)
-- 16GB+ VRAM
+- 8GB+ VRAM
 - Discord Bot Token
 - ComfyUI installed and running
 
