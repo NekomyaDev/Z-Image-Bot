@@ -148,7 +148,7 @@ server:
 
 ## 🔧 RTX 4060 Optimization
 
-Optimized for 16GB VRAM:
+Optimized for 8GB VRAM:
 - Model quantization enabled
 - Efficient memory management
 - Batch size: 1
