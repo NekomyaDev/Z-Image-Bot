@@ -9,7 +9,7 @@ Production-ready ComfyUI API server with Discord bot integration for Z-Image Tur
 - ✅ Custom VAE support
 - ✅ REST API for image generation
 - ✅ Discord bot integration
-- ✅ RTX 4060 optimized (16GB VRAM)
+- ✅ RTX 4060 optimized (8GB VRAM)
 - ✅ Production ready
 - ✅ Easy setup - just add Discord token and run!
 
